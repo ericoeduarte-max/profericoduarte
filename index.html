@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Érico Esteves Duarte</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#14181D;
+    --bg-raised:#1B2027;
+    --ink:#E7E3D8;
+    --ink-dim:#A9A79E;
+    --navy:#8FB3D9;
+    --seal:#C97B7B;
+    --line:#333941;
+    --brass:#C9A46B;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-font-smoothing:antialiased;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Source Serif 4", Georgia, serif;
+    line-height:1.65;
+  }
+  .sheet{
+    max-width:760px;
+    margin:0 auto;
+    padding:64px 32px 96px;
+  }
+  header.masthead{
+    text-align:center;
+    margin-bottom:56px;
+  }
+  .eyebrow{
+    font-family:"IBM Plex Sans", sans-serif;
+    font-size:11px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--brass);
+    margin:0 0 14px;
+  }
+  h1.name{
+    font-family:"Fraunces", serif;
+    font-weight:600;
+    font-size:clamp(34px, 5vw, 48px);
+    letter-spacing:0.01em;
+    margin:0 0 10px;
+    color:var(--navy);
+  }
+  .rule-double{
+    width:220px;
+    margin:18px auto 18px;
+    height:6px;
+    border-top:1.5px solid var(--navy);
+    border-bottom:1px solid var(--navy);
+    opacity:0.6;
+  }
+  .position{
+    font-family:"IBM Plex Sans", sans-serif;
+    font-size:14.5px;
+    color:var(--ink-dim);
+    margin:0;
+  }
+  .position span.sep{ color: var(--brass); margin: 0 8px; }
+
+  section.article{
+    margin-bottom:44px;
+    padding-top:8px;
+  }
+  .article-head{
+    display:flex;
+    align-items:baseline;
+    gap:14px;
+    border-bottom:1px solid var(--line);
+    padding-bottom:8px;
+    margin-bottom:18px;
+  }
+  .art-no{
+    font-family:"IBM Plex Sans", sans-serif;
+    font-weight:600;
+    font-size:12.5px;
+    letter-spacing:0.08em;
+    color:var(--seal);
+    white-space:nowrap;
+  }
+  .art-title{
+    font-family:"Fraunces", serif;
+    font-size:21px;
+    font-weight:500;
+    color:var(--navy);
+    margin:0;
+  }
+  p.lede{
+    font-size:16.5px;
+    max-width:62ch;
+    color:var(--ink);
+  }
+
+  /* Tabs */
+  .tabbar{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+    margin-bottom:20px;
+  }
+  .tabbtn{
+    font-family:"IBM Plex Sans", sans-serif;
+    font-size:12.5px;
+    letter-spacing:0.03em;
+    color:var(--ink-dim);
+    background:transparent;
+    border:1px solid var(--line);
+    border-radius:3px;
+    padding:7px 13px;
+    cursor:pointer;
+    transition:all .15s ease;
+  }
+  .tabbtn:hover{ color:var(--ink); border-color:var(--brass); }
+  .tabbtn.active{
+    color:var(--bg);
+    background:var(--brass);
+    border-color:var(--brass);
+  }
+  .tabpanel{ display:none; }
+  .tabpanel.active{ display:block; }
+
+  .pub-list, .teach-list{
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+  .pub-list li, .teach-list li{
+    font-family:"IBM Plex Sans", sans-serif;
+    font-size:14.5px;
+    padding:10px 0;
+    border-bottom:1px dotted var(--line);
+    display:flex;
+    justify-content:space-between;
+    gap:16px;
+    color:var(--ink);
+  }
+  .pub-list li:last-child, .teach-list li:last-child{ border-bottom:none; }
+  .pub-main{ flex:1; }
+  .pub-venue{ font-style:italic; color:var(--navy); }
+  .pub-year{
+    font-family:"IBM Plex Sans", sans-serif;
+    font-size:13px;
+    color:var(--brass);
+    white-space:nowrap;
+    padding-top:1px;
+  }
+  .empty-note{
+    font-family:"IBM Plex Sans", sans-serif;
+    font-size:13.5px;
+    color:var(--ink-dim);
+    font-style:italic;
+    padding:12px 0;
+  }
+  .flag{
+    background:#2A2410;
+    border:1px dashed var(--brass);
+    color:#E3C98B;
+    font-family:"IBM Plex Sans", sans-serif;
+    font-size:12.5px;
+    padding:8px 12px;
+    margin-top:14px;
+    border-radius:2px;
+  }
+  .contact-grid{
+    font-family:"IBM Plex Sans", sans-serif;
+    font-size:14.5px;
+    display:grid;
+    grid-template-columns:120px 1fr;
+    row-gap:10px;
+  }
+  .contact-grid dt{ color:var(--brass); font-weight:500; }
+  .contact-grid dd{ margin:0; color:var(--ink); }
+  a{ color:var(--seal); text-decoration:none; border-bottom:1px solid transparent; }
+  a:hover{ border-bottom-color:var(--seal); }
+  footer{
+    margin-top:64px;
+    text-align:center;
+    font-family:"IBM Plex Sans", sans-serif;
+    font-size:11.5px;
+    color:var(--ink-dim);
+    letter-spacing:0.04em;
+  }
+  @media (max-width:480px){
+    .sheet{ padding:40px 20px 72px; }
+    .contact-grid{ grid-template-columns:1fr; row-gap:4px; }
+    .contact-grid dt{ margin-top:8px; }
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <header class="masthead">
+    <p class="eyebrow">Federal University of Rio Grande do Sul</p>
+    <h1 class="name">Érico Esteves Duarte</h1>
+    <div class="rule-double"></div>
+    <p class="position">Professor of Strategic Studies &amp; International Relations<span class="sep">·</span>Department of Economics and International Relations</p>
+  </header>
+
+  <section class="article">
+    <div class="article-head">
+      <span class="art-no">§1</span>
+      <h2 class="art-title">About</h2>
+    </div>
+    <p class="lede">
+      Researcher and professor of International Relations, working on strategic studies, defense and security,
+      civil-military relations, and professional military education. Based at the Department of Economics and
+      International Relations, UFRGS, and affiliated with the Graduate Program in International Strategic Studies
+      (PPGEEI), with ties to the Brazilian War College (ESD) and Nova University of Lisbon.
+    </p>
+    <div class="flag">✎ NOTA (não publicada): manter este texto ou prefere algo mais pessoal, com trajetória, doutorado, temas de pesquisa em suas próprias palavras?</div>
+  </section>
+
+  <section class="article">
+    <div class="article-head">
+      <span class="art-no">§2</span>
+      <h2 class="art-title">Academic Output</h2>
+    </div>
+
+    <div class="tabbar" role="tablist">
+      <button class="tabbtn active" data-tab="articles">Articles</button>
+      <button class="tabbtn" data-tab="books">Books</button>
+      <button class="tabbtn" data-tab="chapters">Book Chapters</button>
+      <button class="tabbtn" data-tab="talks">Talks</button>
+      <button class="tabbtn" data-tab="courses">Courses</button>
+      <button class="tabbtn" data-tab="projects">Research Projects</button>
+      <button class="tabbtn" data-tab="consulting">Consulting &amp; Policy Papers</button>
+    </div>
+
+    <div class="tabpanel active" data-panel="articles">
+      <ul class="pub-list">
+        <li>
+          <span class="pub-main"><a href="pdfs/duarte-dawas-2026-oriente-medio.pdf" target="_blank">Entre gastos e autonomia: indústria de defesa e hierarquias regionais no Oriente Médio, 2010-2024</a> <span class="pub-venue">(with Aramis Dawas) — InterAção, v.17, n.2</span></span>
+          <span class="pub-year">2026</span>
+        </li>
+        <li>
+          <span class="pub-main"><a href="pdfs/duarte-peixoto-2026-taiwan-defence-plan.pdf" target="_blank">A Raging Urban People at War: A Comprehensive Defence Plan for Taiwan</a> <span class="pub-venue">(with Gabriel Rodrigues Peixoto) — Defense &amp; Security Analysis</span></span>
+          <span class="pub-year">2026</span>
+        </li>
+        <li>
+          <span class="pub-main"><a href="pdfs/duarte-2025-korean-war-defensive-tactics.pdf" target="_blank">The US Army's Defensive Tactics and Military Adaptation during the Korean War, 1950–1951</a> <span class="pub-venue">Comparative Strategy, 44(6)</span></span>
+          <span class="pub-year">2025</span>
+        </li>
+        <li>
+          <span class="pub-main"><a href="pdfs/duarte-2025-choques-externos-inercia-interna.pdf" target="_blank">Choques Externos e Inércia Interna: Obstáculos Organizacionais à Inovação Militar em Taiwan</a> <span class="pub-venue">Análise Estratégica, v.39, n.4</span></span>
+          <span class="pub-year">2025</span>
+        </li>
+        <li>
+          <span class="pub-main"><a href="pdfs/duarte-2025-politizacao-marinha-argentina.pdf" target="_blank">Politização e Efetividade Militar: o Caso da Marinha Argentina nas Malvinas</a> <span class="pub-venue">Revista Brasileira de Estudos de Defesa (RBED), v.12</span></span>
+          <span class="pub-year">2025</span>
+        </li>
+        <li>
+          <span class="pub-main"><a href="pdfs/duarte-2025-expecting-the-next-coup.pdf" target="_blank">Expecting the Next Coup? The Unchallenged Brazilian Military's Bargaining Power</a> <span class="pub-venue">Bulletin of Latin American Research</span></span>
+          <span class="pub-year">2025</span>
+        </li>
+        <li>
+          <span class="pub-main"><a href="pdfs/duarte-benites-2025-diplomacia-antartica.pdf" target="_blank">O Baixo Engajamento Institucional da Diplomacia Antártica Brasileira</a> <span class="pub-venue">(with Gabriel Nascimento de Alcântara Benites) — Carta Internacional, v.20, n.1</span></span>
+          <span class="pub-year">2025</span>
+        </li>
+        <li>
+          <span class="pub-main"><a href="pdfs/duarte-ferabolli-2025-credentialization-afs.pdf" target="_blank">Credentialization without Socialization: Professional Military Education and Civil–Military Relations in Brazil</a> <span class="pub-venue">(with S. Ferabolli) — Armed Forces &amp; Society</span></span>
+          <span class="pub-year">forthcoming</span>
+        </li>
+        <li>
+          <span class="pub-main"><a href="pdfs/leao-duarte-2024-vukovar.pdf" target="_blank">Os Desafios da Guerra Urbana: um Estudo de Caso da Batalha de Vukovar</a> <span class="pub-venue">(with Tales Wallauer de Leão) — Revista de Geopolítica, v.15, n.4</span></span>
+          <span class="pub-year">2024</span>
+        </li>
+        <li>
+          <span class="pub-main"><a href="pdfs/duarte-gonzalez-2022-malvinas-guerra-fria.pdf" target="_blank">The Falklands War and the Soviet Involvement: Perceptions and Implications for Argentina, United Kingdom, and the United States</a> <span class="pub-venue">(with Rodrigo Gonzalez) — Pasado Abierto, n.15</span></span>
+          <span class="pub-year">2022</span>
+        </li>
+        <li>
+          <span class="pub-main"><a href="pdfs/dallagnol-duarte-2022-conventional-deterrence.pdf" target="_blank">Military Power and Conventional Deterrence: A Literature Review</a> <span class="pub-venue">(with Augusto Dall'Agnol) — Revista de Relaciones Internacionales, Estrategia y Seguridad, v.17</span></span>
+          <span class="pub-year">2022</span>
+        </li>
+        <li>
+          <span class="pub-main"><a href="pdfs/santos-duarte-2021-instituicoes-militares-aprendem.pdf" target="_blank">Do Military Institutions Learn? A Literature Review on Organizational Approaches to Defense Management</a> <span class="pub-venue">(with Tamiris Santos) — BIB, n.96</span></span>
+          <span class="pub-year">2021</span>
+        </li>
+        <li>
+          <span class="pub-main"><a href="pdfs/duarte-moura-2019-fins-meios-zee.pdf" target="_blank">The Ends and Naval Means in the Context of the Exclusive Economic Zone</a> <span class="pub-venue">(with Gustavo Moura) — Brazilian Journal of Defense Studies (RBED), v.6, n.2</span></span>
+          <span class="pub-year">2019</span>
+        </li>
+        <li>
+          <span class="pub-main"><a href="pdfs/duarte-kenkel-2019-contesting-perspectives.pdf" target="_blank">Contesting Perspectives on South Atlantic Maritime Security Governance: Brazil and South Africa</a> <span class="pub-venue">(with Kai Michael Kenkel) — South African Journal of International Affairs, v.26, n.3</span></span>
+          <span class="pub-year">2019</span>
+        </li>
+        <li>
+          <span class="pub-main"><a href="pdfs/duarte-sudbrack-2016-artico.pdf" target="_blank">Arctic International Politics in the XXI Century: Defrost and the New Russian Frontier</a> <span class="pub-venue">(with Lucas Sudbrack) — Carta Internacional, v.11</span></span>
+          <span class="pub-year">2016</span>
+        </li>
+        <li>
+          <span class="pub-main"><a href="pdfs/duarte-2015-blue-economy.pdf" target="_blank">Brazil, the Blue Economy and the Maritime Security of the South Atlantic</a> <span class="pub-venue">Journal of the Indian Ocean Region, v.12, n.1</span></span>
+          <span class="pub-year">2016</span>
+        </li>
+        <li>
+          <span class="pub-main">Drugs, Piracy and Sovereignty: Brazil, United States and European Union's Security Perspectives for South Atlantic <span class="pub-venue">S&amp;F Sicherheit und Frieden, v.34</span></span>
+          <span class="pub-year">2016</span>
+        </li>
+        <li>
+          <span class="pub-main"><a href="pdfs/duarte-2015-clausewitz-corbett-regn.pdf" target="_blank">Clausewitz, Corbett, and the Challenge of Limited Wars</a> <span class="pub-venue">Revista da Escola de Guerra Naval, v.21</span></span>
+          <span class="pub-year">2015</span>
+        </li>
+        <li>
+          <span class="pub-main"><a href="pdfs/vucetic-duarte-2015-fighter-aircraft.pdf" target="_blank">New Fighter Aircraft Acquisitions in Brazil and India: Why Not Buy American?</a> <span class="pub-venue">(with Srdjan Vucetic) — Politics &amp; Policy, v.43, n.3</span></span>
+          <span class="pub-year">2015</span>
+        </li>
+        <li>
+          <span class="pub-main"><a href="pdfs/mendes-duarte-2015-clausewitz-lakatos-rbed.pdf" target="_blank">Science of War: Epistemology and Progress on Strategic Studies</a> <span class="pub-venue">(with Flávio Mendes) — Revista Brasileira de Estudos de Defesa, v.2</span></span>
+          <span class="pub-year">2015</span>
+        </li>
+        <li>
+          <span class="pub-main"><a href="pdfs/mendes-duarte-2014-clausewitz-lakatos-denk.pdf" target="_blank">Strategic Studies as a Science: The Clausewitzian Scientific Research Program</a> <span class="pub-venue">(with Flávio Mendes) — Denkwürdigkeiten, n.94</span></span>
+          <span class="pub-year">2014</span>
+        </li>
+        <li>
+          <span class="pub-main"><a href="pdfs/duarte-2013-maritime-security-atlantic-denk.pdf" target="_blank">Approaches to Maritime Security in the Atlantic</a> <span class="pub-venue">Denkwürdigkeiten, n.85</span></span>
+          <span class="pub-year">2013</span>
+        </li>
+        <li>
+          <span class="pub-main">Waltz, the Idea of Anarchy and the Study of International Relations <span class="pub-venue">Revista de Relações Internacionais (Lisbon), n.39</span></span>
+          <span class="pub-year">2013</span>
+        </li>
+        <li>
+          <span class="pub-main"><a href="pdfs/duarte-2013-military-power-austral.pdf" target="_blank">Military Power, Financial Crisis, and International Security Panorama in the 21st Century</a> <span class="pub-venue">Austral — Brazilian Journal of Strategy and International Relations, v.2, n.1</span></span>
+          <span class="pub-year">2013</span>
+        </li>
+        <li>
+          <span class="pub-main"><a href="pdfs/duarte-2013-surge-no-iraque.pdf" target="_blank">A Preliminary Critical Analysis of the Surge Strategy in Iraq, 2007-2013</a> <span class="pub-venue">Conjuntura Austral, v.4, n.15</span></span>
+          <span class="pub-year">2013</span>
+        </li>
+        <li>
+          <span class="pub-main"><a href="pdfs/proenca-duarte-2007-estudos-estrategicos-rbpi.pdf" target="_blank">Strategic Studies as the Core Discipline of National Defense</a> <span class="pub-venue">(with Domício Proença Jr.) — Revista Brasileira de Política Internacional, v.50, n.1</span></span>
+          <span class="pub-year">2007</span>
+        </li>
+        <li>
+          <span class="pub-main"><a href="pdfs/proenca-duarte-2005-concept-of-logistics-jss.pdf" target="_blank">The Concept of Logistics Derived from Clausewitz: All That Is Required so That the Fighting Force Can Be Taken as a Given</a> <span class="pub-venue">(with Domício Proença Jr.) — Journal of Strategic Studies, v.28, n.4</span></span>
+          <span class="pub-year">2005</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="tabpanel" data-panel="books">
+      <ul class="pub-list">
+        <li>
+          <span class="pub-main"><a href="pdfs/duarte-2021-book-falklands-malvinas-war.pdf" target="_blank">The Falklands/Malvinas War in the South Atlantic</a> <span class="pub-venue">editor — Palgrave Macmillan</span></span>
+          <span class="pub-year">2021</span>
+        </li>
+        <li>
+          <span class="pub-main"><a href="pdfs/duarte-2020-book-estudos-estrategicos.pdf" target="_blank">Estudos Estratégicos</a> <span class="pub-venue">Editora InterSaberes</span></span>
+          <span class="pub-year">2020</span>
+        </li>
+        <li>
+          <span class="pub-main"><a href="pdfs/duarte-barros-2019-book-maritime-security-challenges.pdf" target="_blank">Maritime Security Challenges in the South Atlantic</a> <span class="pub-venue">co-editor, with Manuel Correia de Barros — Palgrave Macmillan</span></span>
+          <span class="pub-year">2019</span>
+        </li>
+        <li>
+          <span class="pub-main"><a href="pdfs/duarte-barros-2019-book-navies-maritime-policies.pdf" target="_blank">Navies and Maritime Policies in the South Atlantic</a> <span class="pub-venue">co-editor, with Manuel Correia de Barros — Palgrave Macmillan</span></span>
+          <span class="pub-year">2019</span>
+        </li>
+        <li>
+          <span class="pub-main"><a href="pdfs/duarte-2019-book-guerra-sino-americana.pdf" target="_blank">A Guerra entre China e Estados Unidos na Coreia: da Escalada às Negociações de Cessar-Fogo</a> <span class="pub-venue">Editora Appris</span></span>
+          <span class="pub-year">2019</span>
+        </li>
+        <li>
+          <span class="pub-main"><a href="pdfs/duarte-2013-book-independencia-norte-americana.pdf" target="_blank">A Independência Norte-Americana: Guerra, Revolução e Logística</a> <span class="pub-venue">Editora Leitura XXI — venceu o Concurso de Teses em Defesa do Ministério da Defesa (2010)</span></span>
+          <span class="pub-year">2013</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="tabpanel" data-panel="chapters">
+      <ul class="pub-list">
+        <li>
+          <span class="pub-main"><a href="pdfs/santos-duarte-2025-chapter-inovacao-militar.pdf" target="_blank">Some Reflections on Military Innovation from the Domestic Point of View: Contributions for Brazil</a> <span class="pub-venue">(with Tamiris Santos) — in Estratégia, Tecnologia e Inovação Militar, org. Augusto W.M. Teixeira Jr., Editora UFPB</span></span>
+          <span class="pub-year">2025</span>
+        </li>
+        <li>
+          <span class="pub-main"><a href="pdfs/marcondes-duarte-2025-chapter-south-american-navies.pdf" target="_blank">The Engagement of South America's Navies in Domestic Roles</a> <span class="pub-venue">(with Danilo Marcondes) — in Maritime Strategy &amp; Security Challenges in South America, Kiel Seapower Series vol.7, ISPK</span></span>
+          <span class="pub-year">2025</span>
+        </li>
+        <li>
+          <span class="pub-main"><a href="pdfs/duarte-2025-chapter-good-order-south-atlantic.pdf" target="_blank">Challenges to Good Order at Sea in the South Atlantic with a Focus on the Roles of Navies</a> <span class="pub-venue">in 5th Sea Power for Africa Symposium 2024 (proceedings)</span></span>
+          <span class="pub-year">2025</span>
+        </li>
+        <li>
+          <span class="pub-main"><a href="pdfs/duarte-2023-chapter-politicas-defesa-teses.pdf" target="_blank">Pensando Políticas de Defesa e Externa no Brasil: um Balanço de Teses e Dissertações</a> <span class="pub-venue">in Repensando a Política Externa Brasileira (1822–2022), org. André Luiz Reis da Silva, Editora Appris</span></span>
+          <span class="pub-year">2023</span>
+        </li>
+        <li>
+          <span class="pub-main"><a href="pdfs/duarte-2022-chapter-guerras-russas-pos-guerra-fria.pdf" target="_blank">Similaridades e Diferenças entre as Guerras Russas do Pós-Guerra Fria</a> <span class="pub-venue">in Linha Vermelha: A Guerra da Ucrânia e as Relações Internacionais no Século XXI, org. Felipe Loureiro, Editora Unicamp</span></span>
+          <span class="pub-year">2022</span>
+        </li>
+        <li>
+          <span class="pub-main"><a href="pdfs/duarte-2022-chapter-maritime-security-routledge.pdf" target="_blank">Maritime Security in the South Atlantic</a> <span class="pub-venue">in Routledge Handbook of Maritime Security, eds. Boşilcă, Ferreira &amp; Ryan, Routledge</span></span>
+          <span class="pub-year">2022</span>
+        </li>
+        <li>
+          <span class="pub-main"><a href="pdfs/duarte-2021-book-falklands-malvinas-war.pdf" target="_blank">Between Coercive Diplomacy and Malvinas Fortress: Argentina's Maritime Operations in the Falklands</a> <span class="pub-venue">in The Falklands/Malvinas War in the South Atlantic, Palgrave Macmillan</span></span>
+          <span class="pub-year">2021</span>
+        </li>
+        <li>
+          <span class="pub-main"><a href="pdfs/moura-duarte-2020-chapter-seguranca-maritima-mocambique.pdf" target="_blank">Elementos Teóricos e Conceituais Para a Gestão da Segurança Marítima</a> <span class="pub-venue">(with Gustavo Hack de Moura) — in Moçambique: Segurança Marítima, Governação Oceânica e Desafios Estratégicos, org. Emílio Zeca</span></span>
+          <span class="pub-year">2020</span>
+        </li>
+        <li>
+          <span class="pub-main"><a href="pdfs/bohn-duarte-2020-chapter-industria-defesa.pdf" target="_blank">Defense Industry and Models for Developing Countries</a> <span class="pub-venue">(with Eduardo Bohn) — in Defense and Security Networks: State, Institutions and Innovation (Polos de Defesa e Segurança), Editora UFSM</span></span>
+          <span class="pub-year">2020</span>
+        </li>
+        <li>
+          <span class="pub-main"><a href="pdfs/duarte-2018-chapter-saber-sobre-a-guerra.pdf" target="_blank">Epistemology, Method and Theory of Carl von Clausewitz</a> <span class="pub-venue">in Strategic Studies Handbook, Editora InterSaberes</span></span>
+          <span class="pub-year">2020</span>
+        </li>
+        <li>
+          <span class="pub-main"><a href="pdfs/duarte-barros-2019-book-maritime-security-challenges.pdf" target="_blank">Facing the Transnational Criminal Organizations in the South Atlantic</a> <span class="pub-venue">(with Danilo Marcondes &amp; Camilo Carneiro) — in Maritime Security Challenges in the South Atlantic, Palgrave Macmillan</span></span>
+          <span class="pub-year">2019</span>
+        </li>
+        <li>
+          <span class="pub-main"><a href="pdfs/duarte-2016-chapter-cebri-seguranca-defesa.pdf" target="_blank">Brazil in Security and Defence</a> <span class="pub-venue">in Challenges for the Brazilian Foreign Policy, ed. Matias Spektor, CEBRI</span></span>
+          <span class="pub-year">2016</span>
+        </li>
+        <li>
+          <span class="pub-main"><a href="pdfs/ronconi-duarte-2016-chapter-mercado-aeronaves.pdf" target="_blank">Mercado Internacional de Aeronaves Militares: um Modelo dos Requisitos para a Inserção Brasileira</a> <span class="pub-venue">(with Giordano Bruno Antoniazzi Ronconi) — in Defesa e Segurança do Atlântico Sul: VIII ENABED, Editora UFS</span></span>
+          <span class="pub-year">2016</span>
+        </li>
+        <li>
+          <span class="pub-main"><a href="pdfs/duarte-2016-chapter-batalhao-perdido.pdf" target="_blank">O Batalhão Perdido: a Grande Guerra e a Mudança na Face da Batalha Contemporânea</a> <span class="pub-venue">in As Relações Internacionais e o Cinema, vol.2</span></span>
+          <span class="pub-year">2016</span>
+        </li>
+        <li>
+          <span class="pub-main"><a href="pdfs/duarte-2015-chapter-enduring-nato-rising-brazil.pdf" target="_blank">Securing the South Atlantic: in Favour of a Revised Brazilian Maritime Strategy</a> <span class="pub-venue">in Enduring NATO, Rising Brazil, ed. Brooke Smith-Windsor, NATO Defence College, Rome</span></span>
+          <span class="pub-year">2015</span>
+        </li>
+        <li>
+          <span class="pub-main">International Cooperation for Ensuring the Safety of Brazil's Land and Maritime Boundaries <span class="pub-venue">in Multilateral Security Governance, ed. Felix Dane, Fundação Konrad Adenauer</span></span>
+          <span class="pub-year">2014</span>
+        </li>
+        <li>
+          <span class="pub-main">Defence Management &amp; Defence Analysis: Challenges to the Brazilian Ministry of Defence <span class="pub-venue">(with Tamiris Santos) — in Políticas de Defesa, Inteligência e Segurança, ed. Carlos Arturi, Editora UFRGS</span></span>
+          <span class="pub-year">2014</span>
+        </li>
+        <li>
+          <span class="pub-main">Global Port Security and Its Possible Reflections in Brazil <span class="pub-venue">(with Heitor Bonato) — in Políticas de Defesa, Inteligência e Segurança, ed. Carlos Arturi, Editora UFRGS</span></span>
+          <span class="pub-year">2014</span>
+        </li>
+        <li>
+          <span class="pub-main"><a href="pdfs/duarte-2012-chapter-conduta-guerra-digital-ipea-livro.pdf" target="_blank">A Conduta da Guerra na Era Digital: Conceitos, Políticas e Práticas</a> <span class="pub-venue">in Defesa Nacional para o Século XXI: Política Internacional, Estratégia e Tecnologia Militar, Rio de Janeiro: Ipea</span></span>
+          <span class="pub-year">2012</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="tabpanel" data-panel="talks">
+      <ul class="pub-list">
+        <li>
+          <span class="pub-main">Argentina's Maritime Operations in the Falklands War <span class="pub-venue">presentation, McMullen Naval History Symposium, U.S. Naval Academy, Annapolis</span></span>
+          <span class="pub-year">2025</span>
+        </li>
+        <li>
+          <span class="pub-main"><a href="pdfs/duarte-2025-chapter-good-order-south-atlantic.pdf" target="_blank">Challenges to Good Order at Sea in the South Atlantic with a Focus on the Roles of Navies</a> <span class="pub-venue">keynote, 5th Sea Power for Africa Symposium (online)</span></span>
+          <span class="pub-year">2024</span>
+        </li>
+        <li>
+          <span class="pub-main"><a href="pdfs/duarte-santos-2023-talk-is-isss.pdf" target="_blank">Are Military Adaptation and Innovation the Same Thing?</a> <span class="pub-venue">(with Tamiris Pereira dos Santos) — IS-ISSS Annual Conference, Colorado Springs</span></span>
+          <span class="pub-year">2023</span>
+        </li>
+        <li>
+          <span class="pub-main"><a href="pdfs/duarte-2022-talk-enabed.pdf" target="_blank">Pensando Políticas de Defesa e Externa no Brasil: um Balanço de Teses e Dissertações</a> <span class="pub-venue">conference paper, XII ENABED</span></span>
+          <span class="pub-year">2022</span>
+        </li>
+        <li>
+          <span class="pub-main"><a href="pdfs/duarte-2019-talk-abri.pdf" target="_blank">Relações Civis-Militares e Efetividade Militar: Explorações Conceituais-Metodológicas</a> <span class="pub-venue">7º Encontro Nacional da ABRI</span></span>
+          <span class="pub-year">2019</span>
+        </li>
+        <li>
+          <span class="pub-main"><a href="pdfs/duarte-2008-talk-abed.pdf" target="_blank">A Análise Crítica de Clausewitz (Kritik): Rigor Epistemológico e Potencial Interdisciplinar</a> <span class="pub-venue">ABED conference</span></span>
+          <span class="pub-year">2008</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="tabpanel" data-panel="courses">
+      <ul class="teach-list">
+        <li><span class="pub-main"><a href="pdfs/syllabus-teoria-relacoes-internacionais.pdf" target="_blank">Teoria das Relações Internacionais A</a> <span class="pub-venue">— ECO 02055, graduação em Relações Internacionais, FCE-UFRGS, desde 2013</span></span></li>
+        <li><span class="pub-main"><a href="pdfs/syllabus-seguranca-defesa-cibernetica.pdf" target="_blank">Segurança e Defesa Cibernéticas nos Contextos Internacional e Nacional</a> <span class="pub-venue">— 30h, especialização/MBA em Segurança Cibernética, CEGOV-UFRGS</span></span></li>
+      </ul>
+      <div class="flag">✎ NOTA: só encontrei ementas/planos de ensino arquivados para estas duas disciplinas. Você também coordenou o MBA em Estratégia e Assuntos Internacionais (IPH-UFRGS) e é professor no PPGEEI e na Escola Superior de Defesa — envie as ementas dessas outras disciplinas para eu incluir.</div>
+    </div>
+
+    <div class="tabpanel" data-panel="projects">
+      <ul class="pub-list">
+        <li>
+          <span class="pub-main">The New US Long-Range Artillery and the Brazilian ASTROS System <span class="pub-venue">CAPES/Ministry of Defense's Strategic International Research Visiting Program</span></span>
+          <span class="pub-year">2022–2023</span>
+        </li>
+        <li>
+          <span class="pub-main">The Army that Brazil Needs: Civil-Military Relations and Military Effectiveness <span class="pub-venue">Principal Investigator</span></span>
+          <span class="pub-year">2020–2023</span>
+        </li>
+        <li>
+          <span class="pub-main">Ridgway's Legacy and the U.S. Army Learning on Limited Wars <span class="pub-venue">General and Mrs. Matthew B. Ridgway Research Grant, US Army Heritage and Education Center</span></span>
+          <span class="pub-year">2020–2022</span>
+        </li>
+        <li>
+          <span class="pub-main">The Use of Rockets and Missiles Artillery for National Defence: ASTROS 2020 as a Military Transformation Factor <span class="pub-venue">Project Deputy Coordinator</span></span>
+          <span class="pub-year">ongoing</span>
+        </li>
+      </ul>
+      <div class="flag">✎ NOTA: no seu CV-fonte não consta o financiador nem o período exatos do projeto ASTROS 2020 (só o papel de "Deputy Coordinator"). Envie essa informação para eu completar.</div>
+    </div>
+
+    <div class="tabpanel" data-panel="consulting">
+      <ul class="pub-list">
+        <li>
+          <span class="pub-main"><a href="pdfs/duarte-2025-jornal-ufrgs-op-ed.pdf" target="_blank">Condenação de Generais Não Resolve as Relações Civis-Militares no Brasil</a> <span class="pub-venue">opinião — Jornal da UFRGS</span></span>
+          <span class="pub-year">2025</span>
+        </li>
+        <li>
+          <span class="pub-main"><a href="pdfs/duarte-2023-folha-op-ed.pdf" target="_blank">O Brasil Falhou com os Militares</a> <span class="pub-venue">artigo de opinião — Folha de S.Paulo</span></span>
+          <span class="pub-year">2023</span>
+        </li>
+        <li>
+          <span class="pub-main"><a href="pdfs/duarte-2023-cebri-policy-brief.pdf" target="_blank">Brazil and the Russian-Ukraine War</a> <span class="pub-venue">policy brief — CEBRI</span></span>
+          <span class="pub-year">2023</span>
+        </li>
+        <li>
+          <span class="pub-main"><a href="pdfs/duarte-2023-boletim-astros.pdf" target="_blank">O PT e os Militares</a> <span class="pub-venue">Boletim ASTROS</span></span>
+          <span class="pub-year">2023</span>
+        </li>
+        <li>
+          <span class="pub-main"><a href="pdfs/duarte-2013-rusi-newsbrief.pdf" target="_blank">The Politics of Brazilian Intelligence and Foreign Relations with the US</a> <span class="pub-venue">RUSI Newsbrief, v.33</span></span>
+          <span class="pub-year">2013</span>
+        </li>
+        <li>
+          <span class="pub-main"><a href="pdfs/duarte-2012-ipea-conduta-guerra-digital.pdf" target="_blank">The Conduct of War in the Digital Era and Implications for Brazil</a> <span class="pub-venue">Texto para Discussão (IPEA), n.1760</span></span>
+          <span class="pub-year">2012</span>
+        </li>
+        <li>
+          <span class="pub-main"><a href="pdfs/duarte-2012-ipea-tecnologia-militar.pdf" target="_blank">Military Technology and Economic Development: A Historical Assessment</a> <span class="pub-venue">Texto para Discussão (IPEA), n.1748</span></span>
+          <span class="pub-year">2012</span>
+        </li>
+      </ul>
+    </div>
+
+  </section>
+
+  <section class="article">
+    <div class="article-head">
+      <span class="art-no">§3</span>
+      <h2 class="art-title">Contact</h2>
+    </div>
+    <dl class="contact-grid">
+      <dt>Email</dt><dd>ericoduarte@gmail.com</dd>
+      <dt>Lattes</dt><dd><a href="http://lattes.cnpq.br/6434813168388201" target="_blank">lattes.cnpq.br/6434813168388201</a></dd>
+      <dt>Affiliation</dt><dd>UFRGS — Dept. of Economics and International Relations</dd>
+    </dl>
+    <div class="flag">✎ NOTA: confirme o e-mail público e se quer incluir ORCID, Google Scholar ou LinkedIn.</div>
+  </section>
+
+  <footer>
+    Site under construction — last updated July 2026
+  </footer>
+
+</div>
+
+<script>
+  document.querySelectorAll('.tabbtn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var tab = btn.getAttribute('data-tab');
+      document.querySelectorAll('.tabbtn').forEach(function(b){ b.classList.remove('active'); });
+      document.querySelectorAll('.tabpanel').forEach(function(p){ p.classList.remove('active'); });
+      btn.classList.add('active');
+      document.querySelector('.tabpanel[data-panel="'+tab+'"]').classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
