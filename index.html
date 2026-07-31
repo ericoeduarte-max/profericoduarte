@@ -164,6 +164,33 @@
     white-space:nowrap;
     padding-top:1px;
   }
+  .proj-list li{ display:block; }
+  .proj-head{
+    display:flex;
+    justify-content:space-between;
+    gap:16px;
+  }
+  .proj-summary{
+    font-family:"IBM Plex Sans", sans-serif;
+    font-size:13.5px;
+    line-height:1.55;
+    color:var(--ink-dim);
+    margin:8px 0 0;
+    max-width:64ch;
+  }
+  .proj-meta{
+    font-family:"IBM Plex Sans", sans-serif;
+    font-size:12.5px;
+    color:var(--ink-dim);
+    margin:6px 0 0;
+  }
+  .proj-products{
+    font-family:"IBM Plex Sans", sans-serif;
+    font-size:12.5px;
+    margin:8px 0 0;
+  }
+  .proj-products span.label{ color:var(--brass); margin-right:6px; }
+  .proj-products a{ margin-right:12px; }
   .empty-note{
     font-family:"IBM Plex Sans", sans-serif;
     font-size:13.5px;
@@ -508,25 +535,44 @@
     </div>
 
     <div class="tabpanel" data-panel="projects">
-      <ul class="pub-list">
+      <ul class="pub-list proj-list">
         <li>
-          <span class="pub-main">The New US Long-Range Artillery and the Brazilian ASTROS System <span class="pub-venue">CAPES/Ministry of Defense's Strategic International Research Visiting Program</span></span>
-          <span class="pub-year">2022–2023</span>
+          <div class="proj-head">
+            <span class="pub-main">Relações Civis-Militares e Educação Profissional Militar: Estudos Comparados entre Brasil, Chile, Argentina, México, Turquia e África do Sul <span class="pub-venue">FAPERGS — Edital 06/2025, Programa Pesquisador Gaúcho (PqG), processo 25/2551-0002686-5</span></span>
+            <span class="pub-year">2026–2028</span>
+          </div>
+          <p class="proj-summary">Estudo comparado de método misto (QCA e análise de cluster) sobre controle civil da educação militar em seis países — Brasil, Argentina, Chile, México, Turquia e África do Sul — a partir de cinco variáveis: participação civil no currículo de academias e escolas de estado-maior; disciplinas de política, relações internacionais e estudos estratégicos; tipo de regime; e presença de ameaças regionais estatais e não estatais. Prevê a publicação de ao menos quatro artigos acadêmicos, um livro por editora internacional e um policy paper com recomendações de reforma dos três sistemas de educação militar brasileiros, a ser apresentado à Casa Civil da Presidência e ao Ministério da Defesa.</p>
+          <p class="proj-meta">Coordenador: Érico Esteves Duarte (UFRGS) — Equipe: Matheus Dalbosco Pereira (UFSM), Tamiris Santos (Loughborough University)</p>
         </li>
         <li>
-          <span class="pub-main">The Army that Brazil Needs: Civil-Military Relations and Military Effectiveness <span class="pub-venue">Principal Investigator</span></span>
-          <span class="pub-year">2020–2023</span>
+          <div class="proj-head">
+            <span class="pub-main">The Use of Rockets and Missiles Artillery for National Defence: ASTROS 2020 as a Military Transformation Factor <span class="pub-venue">PROCAD-Defesa (CAPES/Ministério da Defesa) — inclui a fase "The New US Long-Range Artillery and the Brazilian ASTROS System", Strategic International Research Visiting Program</span></span>
+            <span class="pub-year">2022–2023 · concluído</span>
+          </div>
+          <p class="proj-meta">Coordenação: Érico Esteves Duarte (Deputy Coordinator)</p>
         </li>
         <li>
-          <span class="pub-main">Ridgway's Legacy and the U.S. Army Learning on Limited Wars <span class="pub-venue">General and Mrs. Matthew B. Ridgway Research Grant, US Army Heritage and Education Center</span></span>
-          <span class="pub-year">2020–2022</span>
+          <div class="proj-head">
+            <span class="pub-main">The Army that Brazil Needs: Civil-Military Relations and Military Effectiveness <span class="pub-venue">Principal Investigator</span></span>
+            <span class="pub-year">2020–2023</span>
+          </div>
         </li>
         <li>
-          <span class="pub-main">The Use of Rockets and Missiles Artillery for National Defence: ASTROS 2020 as a Military Transformation Factor <span class="pub-venue">Project Deputy Coordinator</span></span>
-          <span class="pub-year">ongoing</span>
+          <div class="proj-head">
+            <span class="pub-main">Ridgway's Legacy and the U.S. Army Learning on Limited Wars <span class="pub-venue">General and Mrs. Matthew B. Ridgway Research Grant, US Army Heritage and Education Center</span></span>
+            <span class="pub-year">2020–2022</span>
+          </div>
+        </li>
+        <li>
+          <div class="proj-head">
+            <span class="pub-main">Bases Militares da Autonomia Estratégica Nacional: Produção Local de Conceitos Operacionais e Material de Defesa <span class="pub-venue">CEEEx — Centro de Estudos Estratégicos do Exército</span></span>
+            <span class="pub-year">2026 · concluído</span>
+          </div>
+          <p class="proj-summary">Workshop e linha de pesquisa sobre autonomia estratégica e inovação militar, comparando a capacidade de grandes potências (EUA, URSS/Rússia, China) e potências médias (Turquia, África do Sul, Emirados Árabes, Brasil) de inovar e adaptar conceitos operacionais e produzir material de defesa com baixa dependência externa. Discute a capacidade do Exército Brasileiro de produzir de forma independente concepções de operações, conceitos doutrinários e sistemas de armamento, identificando áreas de autonomia e de dependência externa para subsidiar um planejamento de endogeneização de capacidades.</p>
+          <p class="proj-products"><span class="label">Produtos:</span><a href="pdfs/santos-duarte-2025-chapter-inovacao-militar.pdf" target="_blank">Some Reflections on Military Innovation from the Domestic Point of View (ensaio, 2025)</a><a href="pdfs/duarte-2025-choques-externos-inercia-interna.pdf" target="_blank">Choques Externos e Inércia Interna: Obstáculos Organizacionais à Inovação Militar em Taiwan (artigo, 2025)</a></p>
         </li>
       </ul>
-      <div class="flag">✎ NOTA: no seu CV-fonte não consta o financiador nem o período exatos do projeto ASTROS 2020 (só o papel de "Deputy Coordinator"). Envie essa informação para eu completar.</div>
+      <div class="flag">✎ NOTA: para o projeto CEEEx, só tenho a proposta do workshop — falta confirmar o período exato do projeto (se diferente de 2026) e se ele já está mesmo concluído. Vinculei como produtos o capítulo com Tamiris Santos e o artigo sobre inovação militar em Taiwan (o mais próximo do tema no site) — confirme se são esses mesmo. Para o PROCAD, ainda falta saber quais artigos/policy papers já publicados vincular como produtos (os manuscritos sobre ASTROS que achei na sua pasta ainda estão em avaliação em revistas, não publicados).</div>
     </div>
 
     <div class="tabpanel" data-panel="consulting">
@@ -570,11 +616,13 @@
       <h2 class="art-title">Contact</h2>
     </div>
     <dl class="contact-grid">
-      <dt>Email</dt><dd>ericoduarte@gmail.com</dd>
+      <dt>Email</dt><dd>erico.duarte@ufrgs.br</dd>
       <dt>Lattes</dt><dd><a href="http://lattes.cnpq.br/6434813168388201" target="_blank">lattes.cnpq.br/6434813168388201</a></dd>
+      <dt>ORCID</dt><dd><a href="https://orcid.org/0000-0001-8261-6367" target="_blank">0000-0001-8261-6367</a></dd>
+      <dt>Google Scholar</dt><dd><a href="https://scholar.google.com/citations?hl=pt-BR&user=st0B12gAAAAJ" target="_blank">scholar.google.com/citations?user=st0B12gAAAAJ</a></dd>
+      <dt>ResearchGate</dt><dd><a href="https://www.researchgate.net/profile/Erico-Duarte" target="_blank">researchgate.net/profile/Erico-Duarte</a></dd>
       <dt>Affiliation</dt><dd>UFRGS — Dept. of Economics and International Relations</dd>
     </dl>
-    <div class="flag">✎ NOTA: confirme o e-mail público e se quer incluir ORCID, Google Scholar ou LinkedIn.</div>
   </section>
 
   <footer>
